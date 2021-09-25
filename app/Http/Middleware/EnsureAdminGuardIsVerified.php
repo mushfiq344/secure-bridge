@@ -6,7 +6,7 @@ use Closure;
 use Redirect;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class EnsureCustomGuardIsVerified
+class EnsureAdminGuardIsVerified
 {
     /**
      * Handle an incoming request.
