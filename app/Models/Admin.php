@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\AdminResetPasswordNotification;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable  implements MustVerifyEmail
 {
     use Notifiable;
 
@@ -28,5 +30,10 @@ class Admin extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new AdminResetPasswordNotification($token));
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\sendAdminEmailVerificationNotification());
     }
 }

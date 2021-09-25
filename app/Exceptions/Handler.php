@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
         if ($request->is('admin') || $request->is('admin/*')) {
-            return redirect()->guest('/login/admin');
+            return redirect()->guest('admin/login');
         }
         if ($request->is('writer') || $request->is('writer/*')) {
             return redirect()->guest('/login/writer');
