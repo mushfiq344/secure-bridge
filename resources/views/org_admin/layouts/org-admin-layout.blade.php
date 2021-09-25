@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,minimal-ui">
-    <title>Uncrowd</title>
+    <title>Secure Bridge</title>
     <meta content="Themesbrand" name="author">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ asset('images/static_images/favicon.png') }}">
@@ -94,7 +94,7 @@
             </nav>
         </div>
 
-        @include('admin.partials.admin.sidebar')
+        @include('org_admin.partials.admin.sidebar')
 
         <div class="content-page">
             <div class="content">

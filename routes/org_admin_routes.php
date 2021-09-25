@@ -4,6 +4,8 @@ Route::prefix('/org-admin')->name('org-admin.')->namespace('OrgAdmin')->group(fu
     Route::group(['middleware' => ['auth:org_admin', 'org-admin-guard.verified:org_admin']], function () {
 
         Route::view('/home', 'org_admin.home')->name('home');
+
+        Route::resource('opportunities', 'OpportunityController');
     });
 
 /**
