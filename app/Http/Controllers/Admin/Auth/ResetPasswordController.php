@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use Auth;
-use Password;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Password;
 
 class ResetPasswordController extends Controller
 {
@@ -16,17 +16,17 @@ class ResetPasswordController extends Controller
      */
     use ResetsPasswords;
 
-     /**
+    /**
      * Where to redirect users after resetting their password.
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected $redirectTo = '/admin/home';
 
     /**
      * Only guests for "admin" guard are allowed except
      * for logout.
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -36,14 +36,15 @@ class ResetPasswordController extends Controller
 
     /**
      * Show the reset password form.
-     * 
+     *
      * @param  \Illuminate\Http\Request $request
      * @param  string|null  $token
      * @return \Illuminate\Http\Response
      */
-    public function showResetForm(Request $request, $token = null){
-        
-        return view('admin.auth.passwords.reset',[
+    public function showResetForm(Request $request, $token = null)
+    {
+
+        return view('admin.auth.passwords.reset', [
             'title' => 'Reset Admin Password',
             'passwordUpdateRoute' => 'admin.password.update',
             'token' => $token,
@@ -55,7 +56,8 @@ class ResetPasswordController extends Controller
      *
      * @return \Illuminate\Contracts\Auth\PasswordBroker
      */
-    protected function broker(){
+    protected function broker()
+    {
         return Password::broker('admins');
     }
 
@@ -64,10 +66,9 @@ class ResetPasswordController extends Controller
      *
      * @return \Illuminate\Contracts\Auth\StatefulGuard
      */
-    protected function guard(){
+    protected function guard()
+    {
         return Auth::guard('admin');
     }
-    
 
-    
 }

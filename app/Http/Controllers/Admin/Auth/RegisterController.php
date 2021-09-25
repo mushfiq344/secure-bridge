@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Auth;
-use App\Models\User;
-use App\Models\Admin;
-use App\Models\Writer;
+
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use App\Providers\RouteServiceProvider;
+use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -22,7 +21,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -40,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-      
+
         $this->middleware('guest:admin');
 
     }
@@ -66,14 +65,11 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-   
 
     public function showRegisterForm()
     {
-        return view('auth.register', ['url' => 'admin']);
+        return view('admin.auth.register', ['url' => 'admin']);
     }
-
-
 
     protected function create(Request $request)
     {
@@ -85,6 +81,5 @@ class RegisterController extends Controller
         ]);
         return redirect()->intended($this->redirectTo);
     }
-
 
 }

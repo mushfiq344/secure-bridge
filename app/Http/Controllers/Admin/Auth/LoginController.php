@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Auth;
-use App\Models\Admin;
+
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Models\Admin;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
 
 class LoginController extends Controller
 {
@@ -19,7 +19,7 @@ class LoginController extends Controller
     | redirecting them to your home screen. The controller uses a trait
     | to conveniently provide its functionality to your applications.
     |
-    */
+     */
 
     use AuthenticatesUsers;
 
@@ -37,21 +37,21 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-     
+
         $this->middleware('guest:admin')->except('logout');
-       
+
     }
 
-     public function showLoginForm()
+    public function showLoginForm()
     {
-        return view('auth.login', ['url' => 'admin']);
+        return view('admin.auth.login', ['url' => 'admin']);
     }
 
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:6'
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
@@ -60,6 +60,5 @@ class LoginController extends Controller
         }
         return back()->withInput($request->only('email', 'remember'));
     }
-
 
 }

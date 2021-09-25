@@ -1,12 +1,13 @@
-@extends('layouts.app')
-
+@extends('admin.layouts.auth')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="card overflow-hidden account-card mx-3">
+    <div class="bg-primary p-4 text-white text-center position-relative">
+        <h4 class="font-20 mb-4">{{ __('Verify Your Email Address') }}</h4><a href="index.html"
+            class="logo logo-admin"><img src="{{asset('admin/images/logo-sm.png')}}" height="24" alt="logo"></a>
+    </div>
+    <div class="account-card-content">
+        <div class="row justify-content-center">
             <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
                 <div class="card-body">
                     @if (session('resent'))
                     <div class="alert alert-success" role="alert">
@@ -22,4 +23,5 @@
         </div>
     </div>
 </div>
+
 @endsection

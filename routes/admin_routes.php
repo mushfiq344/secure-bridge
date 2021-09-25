@@ -1,7 +1,7 @@
 <?php
 Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
-    Route::group(['middleware' => ['auth:admin', 'guard.verified:admin']], function () {
+    Route::group(['middleware' => ['auth:admin', 'admin-guard.verified:admin']], function () {
 
         Route::view('/home', 'admin.home')->name('home');
     });
@@ -12,11 +12,11 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::namespace ('Auth')->group(function () {
 
 //Admin Login Routes
-        Route::get('/login', 'LoginController@showLoginForm');
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login');
 
 //Admin Register Routes
-        Route::get('/register', 'RegisterController@showRegisterForm');
+        Route::get('/register', 'RegisterController@showRegisterForm')->name('register');;
         Route::post('/register', 'RegisterController@create');
 
 //Admin Reset Password Routes

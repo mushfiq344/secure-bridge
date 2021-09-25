@@ -67,7 +67,7 @@ class RegisterController extends Controller
 
     public function showRegisterForm()
     {
-        return view('auth.register', ['url' => 'org-admin']);
+        return view('org_admin.auth.register', ['url' => 'org-admin']);
     }
 
     protected function create(Request $request)

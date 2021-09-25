@@ -12,11 +12,11 @@ Route::prefix('/org-admin')->name('org-admin.')->namespace('OrgAdmin')->group(fu
     Route::namespace ('Auth')->group(function () {
 
 //Organization Admin Login Routes
-        Route::get('/login', 'LoginController@showLoginForm');
+        Route::get('/login', 'LoginController@showLoginForm')->name('login');
         Route::post('/login', 'LoginController@login');
 
 //Organization Admin Register Routes
-        Route::get('/register', 'RegisterController@showRegisterForm');
+        Route::get('/register', 'RegisterController@showRegisterForm')->name('register');
         Route::post('/register', 'RegisterController@create');
 
 //Organization Admin Reset Password Routes
