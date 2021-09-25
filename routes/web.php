@@ -15,3 +15,5 @@ Route::view('/home', 'home')->middleware('auth', 'verified');
 Route::view('/writer', 'writer');
 
 require_once "admin_routes.php";
+
+require_once "org_admin_routes.php";

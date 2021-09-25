@@ -2,24 +2,25 @@
 
 namespace App\Notifications;
 
-use App\Notifications\OrgAdminResetPasswordNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
 
-class OrgAdminResetPasswordNotification extends Notification
+class sendOrgAdminEmailVerificationNotification extends Notification
 {
     use Queueable;
-    private $token;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token = null)
+    public function __construct()
     {
-        $this->token = $token;
+        //
     }
 
     /**
@@ -41,9 +42,10 @@ class OrgAdminResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
+
         return (new MailMessage)
             ->line('The introduction to the notification.')
-            ->action('Reset Password', route('org-admin.password.reset', $this->token))
+            ->action('Verify Email Address', $this->verificationUrl($notifiable))
             ->line('Thank you for using our application!');
     }
 
@@ -58,5 +60,23 @@ class OrgAdminResetPasswordNotification extends Notification
         return [
             //
         ];
+    }
+
+    /*
+     * Build the verification URL
+     *
+     * @return URL
+     */
+    protected function verificationUrl($notifiable)
+    {
+        return URL::temporarySignedRoute(
+            'org-admin.verification.verify',
+            Carbon::now()->addMinutes(
+                Config::get('auth.verification.expire', 60)),
+            [
+                'id' => $notifiable->getKey(),
+                'hash' => sha1($notifiable->getEmailForVerification()),
+            ]
+        );
     }
 }

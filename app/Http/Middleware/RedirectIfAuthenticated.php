@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +21,11 @@ class RedirectIfAuthenticated
         if ($guard == "admin" && Auth::guard($guard)->check()) {
             return redirect('/admin/home');
         }
+
+        if ($guard == "org_admin" && Auth::guard($guard)->check()) {
+            return redirect('/org-admin/home');
+        }
+
         if ($guard == "writer" && Auth::guard($guard)->check()) {
             return redirect('/writer');
         }

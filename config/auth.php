@@ -11,7 +11,7 @@ return [
     | reset options for your application. You may change these defaults
     | as required, but they're a perfect start for most applications.
     |
-    */
+     */
 
     'defaults' => [
         'guard' => 'web',
@@ -33,7 +33,7 @@ return [
     |
     | Supported: "session"
     |
-    */
+     */
 
     'guards' => [
         'web' => [
@@ -43,6 +43,11 @@ return [
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
+        ],
+
+        'org_admin' => [
+            'driver' => 'session',
+            'provider' => 'org_admins',
         ],
         'writer' => [
             'driver' => 'session',
@@ -65,7 +70,7 @@ return [
     |
     | Supported: "database", "eloquent"
     |
-    */
+     */
 
     'providers' => [
         'users' => [
@@ -75,6 +80,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+
+        'org_admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\OrgAdmin::class,
         ],
         'writers' => [
             'driver' => 'eloquent',
@@ -100,7 +110,7 @@ return [
     | considered valid. This security feature keeps tokens short-lived so
     | they have less time to be guessed. You may change this as needed.
     |
-    */
+     */
 
     'passwords' => [
         'users' => [
@@ -114,6 +124,12 @@ return [
             'table' => 'admin_password_resets',
             'expire' => 60,
         ],
+
+        'org_admins' => [
+            'provider' => 'org_admins',
+            'table' => 'org_admin_password_resets',
+            'expire' => 60,
+        ],
     ],
 
     /*
@@ -125,7 +141,7 @@ return [
     | times out and the user is prompted to re-enter their password via the
     | confirmation screen. By default, the timeout lasts for three hours.
     |
-    */
+     */
 
     'password_timeout' => 10800,
 
