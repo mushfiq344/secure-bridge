@@ -12,6 +12,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @yield('header')
+    <link rel="stylesheet" href="{{asset('admin/plugins/chartist/css/chartist.min.css')}}">
+
 
     <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('admin/css/metismenu.min.css')}}" rel="stylesheet" type="text/css">
@@ -94,7 +96,7 @@
             </nav>
         </div>
 
-        @include('org_admin.partials.admin.sidebar')
+        @include('org_admin.partials.sidebar')
 
         <div class="content-page">
             <div class="content">
@@ -112,6 +114,10 @@
             <script src="{{asset('admin/js/bootstrap-notify.js')}}"></script>
             <script src="{{asset('js/bootstrap-datepicker.min.js')}}"></script>
             <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+
+            <script src="{{asset('admin/pages/chartist.init.js')}}"></script>
+            <script src="{{asset('admin/pages/dashboard.js')}}"></script>
+
 
             <!-- custom -->
             <script src="{{asset('admin/js/admin.js')}}"></script>

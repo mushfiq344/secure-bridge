@@ -5,8 +5,8 @@
             <!-- Left Menu Start -->
             <ul class="metismenu" id="side-menu">
                 <li>
-                    <a href="/admin/dashboard" class="waves-effect">
-                        <i class="ti-home"></i> <span>Dashboard</span>
+                    <a href="/org-admin/home" class="waves-effect">
+                        <i class="ti-home"></i> <span>Home</span>
                     </a>
                 </li>
                 <li>
@@ -43,7 +43,7 @@
 
                 <li>
                     <a href="/org-admin/opportunities" class="waves-effect">
-                        <i class="mdi mdi-settings m-r-5"></i><span>Opportunity</span>
+                        <i class="mdi mdi-settings m-r-5"></i><span>Opportunities</span>
                     </a>
                 </li>
                 <!-- <li>

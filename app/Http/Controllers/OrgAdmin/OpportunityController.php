@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\OrgAdmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Opportunity;
 use Illuminate\Http\Request;
 
 class OpportunityController extends Controller
@@ -14,7 +15,8 @@ class OpportunityController extends Controller
      */
     public function index()
     {
-
+        $oppotunities = Opportunity::all();
+        return view('org_admin.opportunity.index', compact('oppotunities'));
     }
 
     /**
@@ -24,7 +26,7 @@ class OpportunityController extends Controller
      */
     public function create()
     {
-        //
+        return view('org_admin.opportunity.create');
     }
 
     /**
@@ -46,7 +48,7 @@ class OpportunityController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -57,7 +59,8 @@ class OpportunityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $opportunity = Opportunity::find($id)->first();
+        return view('org_admin.opportunity.edit', compact('opportunity'));
     }
 
     /**

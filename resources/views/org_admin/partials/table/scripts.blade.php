@@ -19,33 +19,8 @@
 <!-- Datatable init js -->
 <script src="{{asset('admin/pages/datatables.init.js')}}"></script>
 
-<!-- users tables -->
+
 <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(".user-status").change(function() {
-        let status = $(this).val();
-        let user_id = $(this).attr("user-id");
-        $.ajax({
-            type: 'POST',
-            url: "{{ route('admin-change-user-status')}}",
-            data: {
-                is_active: status,
-                user_id: user_id
-            },
-            success: (data) => {
 
-                console.log(data);
-
-            },
-
-            error: function(data) {
-                alert("There has been some error");
-            }
-        });
-    });
 </script>
 @endsection

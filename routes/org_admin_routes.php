@@ -5,7 +5,7 @@ Route::prefix('/org-admin')->name('org-admin.')->namespace('OrgAdmin')->group(fu
 
         Route::view('/home', 'org_admin.home')->name('home');
 
-        Route::resource('opportunities', 'OpportunityController');
+        Route::resource('/opportunities', 'OpportunityController');
     });
 
 /**
